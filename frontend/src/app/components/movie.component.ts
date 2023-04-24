@@ -89,8 +89,8 @@ export class MovieComponent implements OnInit, AfterViewInit {
 
   private createForm(): FormGroup {
     return this.fb.group({
-      rating: this.fb.control<number>(0, [Validators.min(1), Validators.max(10)]),
-      review: this.fb.control<string>('')
+      rating: this.fb.control<number>(0, [Validators.required, Validators.min(1), Validators.max(10)]),
+      review: this.fb.control<string>('', [Validators.required])
     })
   }
 

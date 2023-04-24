@@ -78,8 +78,8 @@
                                                                 <button type="button" class="btn btn-secondary me-2"
                                                                     data-bs-dismiss="modal">Cancel</button>
                                                                 <button type="submit" class="btn btn-dark"
-                                                                    data-bs-dismiss="modal"
-                                                                    (click)="updateToWatched(i)">Submit</button>
+                                                                    data-bs-dismiss="modal" (click)="updateToWatched(i)"
+                                                                    [disabled]="form.invalid">Submit</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -163,8 +163,8 @@
                                                                 <button type="button" class="btn btn-secondary me-2"
                                                                     data-bs-dismiss="modal">Cancel</button>
                                                                 <button type="submit" class="btn btn-dark"
-                                                                    data-bs-dismiss="modal"
-                                                                    (click)="editReview(i)">Submit</button>
+                                                                    data-bs-dismiss="modal" (click)="editReview(i)"
+                                                                    [disabled]="editReviewForm.invalid">Submit</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -176,7 +176,7 @@
                                         </div>
                                     </div>
 
-                                    <div *ngIf="m.reviewRating == -1 && m.text == ''"
+                                    <div *ngIf="m.reviewRating != -1 && m.text == ''"
                                         class="col-md-8 ps-lg-4 card-body d-flex flex-column">
                                         <p class="card-text fs-6">{{ m.countries.join(', ') }}
                                         </p>
@@ -184,47 +184,48 @@
                                         <p class="card-text fw-lighter"><span class="fa fa-star star"></span>
                                             {{m.rating | number: '1.1-2' }}</p>
                                         <!-- Modal -->
-                                        <div class="mt-auto">
-                                            <div>
-                                                <a [routerLink]="[]" class="fw-lighter action" data-bs-toggle="modal"
-                                                    [attr.data-bs-target]="'#addReviewModal' + i">
-                                                    <img src="/assets/pencil.svg"> &nbsp;Add a Review</a>
-                                                <div class="modal fade" [id]="'addReviewModal' + i" tabindex="-1"
-                                                    aria-labelledby="addReviewModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <p class="modal-title fs-6 fw-bold"
-                                                                    id="addReviewModalLabel">
-                                                                    Leave a review for {{ m.title }}</p>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form [formGroup]="addReviewForm">
-                                                                    <div class="mb-3">
-                                                                        <label for="rating"
-                                                                            class="form-label">Rating</label>
-                                                                        <input type="number" min="1" max="10"
-                                                                            class="form-control" id="rating"
-                                                                            formControlName="rating">
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="review"
-                                                                            class="form-label">Review</label>
-                                                                        <textarea class="form-control" id="review"
-                                                                            rows="15"
-                                                                            formControlName="review"></textarea>
-                                                                    </div>
-                                                                    <button type="button" class="btn btn-secondary me-2"
-                                                                        data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-dark"
-                                                                        data-bs-dismiss="modal"
-                                                                        (click)="addReview(i)">Submit</button>
-                                                                </form>
-                                                            </div>
+                                        <div class="mt-auto d-flex">
+                                            <!-- <div> -->
+                                            <a [routerLink]="[]" class="fw-lighter flex-grow-1 action"
+                                                data-bs-toggle="modal" [attr.data-bs-target]="'#addReviewModal' + i">
+                                                <img src="/assets/pencil.svg"> &nbsp;Add a Review</a>
+                                            <div class="modal fade" [id]="'addReviewModal' + i" tabindex="-1"
+                                                aria-labelledby="addReviewModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <p class="modal-title fs-6 fw-bold"
+                                                                id="addReviewModalLabel">
+                                                                Leave a review for {{ m.title }}</p>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form [formGroup]="addReviewForm">
+                                                                <div class="mb-3">
+                                                                    <label for="rating"
+                                                                        class="form-label">Rating</label>
+                                                                    <input type="number" min="1" max="10"
+                                                                        class="form-control" id="rating"
+                                                                        formControlName="rating">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="review"
+                                                                        class="form-label">Review</label>
+                                                                    <textarea class="form-control" id="review" rows="15"
+                                                                        formControlName="review"></textarea>
+                                                                </div>
+                                                                <button type="button" class="btn btn-secondary me-2"
+                                                                    data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-dark"
+                                                                    data-bs-dismiss="modal" (click)="addReview(i)"
+                                                                    [disabled]="addReviewForm.invalid">Submit</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <a [routerLink]="[]" class="fw-lighter action"
+                                                (click)="removeFromList(m.id)"><img src="/assets/delete.svg"></a>
+                                            <!-- </div> -->
                                         </div>
                                     </div>
                                 </div>
