@@ -83,19 +83,19 @@ export class WatchlistComponent implements OnInit, AfterViewInit {
     })
   }
 
-  addToWatched(index: number) {
-    let movie = this.pendMovies.at(index)
-    const watchedRequest = new WatchedRequest(this.email, movie!, this.form.value["rating"], this.form.value["review"])
-    this.watchlistService.addToWatched(watchedRequest)
-      .then(result => {
-        console.info('>>> result add to watched: ', result)
-        this.getWatchlist()
-      })
-      .catch(error => {
-        console.error('>>> error add to watched: ', error)
-      })
-    this.form.reset()
-  }
+  // addToWatched(index: number) {
+  //   let movie = this.pendMovies.at(index)
+  //   const watchedRequest = new WatchedRequest(this.email, movie!, this.form.value["rating"], this.form.value["review"])
+  //   this.watchlistService.addToWatched(watchedRequest)
+  //     .then(result => {
+  //       console.info('>>> result add to watched: ', result)
+  //       this.getWatchlist()
+  //     })
+  //     .catch(error => {
+  //       console.error('>>> error add to watched: ', error)
+  //     })
+  //   this.form.reset()
+  // }
 
   updateToWatched(index: number) {
     let movie = this.pendMovies.at(index)

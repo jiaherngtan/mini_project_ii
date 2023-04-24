@@ -26,7 +26,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
   similarMovies: Movie[] = []
   params$!: Subscription
   email!: string
-  form!: FormGroup
+  toWatchedForm!: FormGroup
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -50,7 +50,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
         window.scrollTo(0, 0)
       }
     })
-    this.form = this.createForm()
+    this.toWatchedForm = this.createForm()
     this.params$ = this.activatedRoute.params.subscribe(
       (params) => {
         this.id = params['id']
@@ -113,7 +113,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
     if (null == this.email) {
       this.router.navigate(['/login'])
     } else {
-      const watchedRequest = new WatchedRequest(this.email, this.movie, this.form.value["rating"], this.form.value["review"])
+      const watchedRequest = new WatchedRequest(this.email, this.movie, this.toWatchedForm.value["rating"], this.toWatchedForm.value["review"])
       this.watchlistService.addToWatched(watchedRequest)
         .then(result => {
           console.info('>>> result adding to watched: ', result)
@@ -121,7 +121,7 @@ export class MovieComponent implements OnInit, AfterViewInit {
         .catch(error => {
           console.error('>>> error adding to watched: ', error)
         })
-      this.form.reset()
+      this.toWatchedForm.reset()
     }
   }
 
