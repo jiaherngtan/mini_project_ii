@@ -1,0 +1,143 @@
+{
+  "configVersion": 1,
+  "timestamp": 1682336165776,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/568.d52e073cb9ba603b.js",
+        "/742.3cc1213a24edfd45.js",
+        "/favicon.ico",
+        "/firebase-messaging-sw.js",
+        "/index.html",
+        "/main.f4608aac1a04ef17.js",
+        "/manifest.webmanifest",
+        "/polyfills.48032dd0403ca3fa.js",
+        "/runtime.f63270194df71bb2.js",
+        "/scripts.46376658852b4050.js",
+        "/styles.9b0914432c0323c8.css"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css2\\?family=Roboto:wght@300;400;500&display=swap",
+        "https:\\/\\/fonts\\.googleapis\\.com\\/icon\\?family=Material\\+Icons"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/bar-chart.svg",
+        "/assets/blank-poster-resized.jpeg",
+        "/assets/blank-poster.jpeg",
+        "/assets/blank-profile-resized.webp",
+        "/assets/blank-profile.webp",
+        "/assets/delete-profile.svg",
+        "/assets/delete.svg",
+        "/assets/edit.svg",
+        "/assets/grand-budapest-hotel.avif",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/info.svg",
+        "/assets/lalaland.jpeg",
+        "/assets/logo.jpeg",
+        "/assets/megaphone.svg",
+        "/assets/pencil.svg",
+        "/assets/plus.svg",
+        "/assets/reservoir-dogs-1992.webp",
+        "/assets/the-fabelmans.jpeg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "home",
+      "patterns": [
+        "\\/api\\/popular",
+        "\\/api\\/top",
+        "\\/api\\/now"
+      ],
+      "strategy": "freshness",
+      "maxSize": 5,
+      "maxAge": 21600000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/568.d52e073cb9ba603b.js": "268fc6f5ee63aa0d3d051d6d35b050fb67f896f5",
+    "/742.3cc1213a24edfd45.js": "2b4a66f24a55cabeefcc2fb2fc7838e382d3caca",
+    "/assets/bar-chart.svg": "29e3ce7f4923ae5223610c5a04f5a5f863070d4c",
+    "/assets/blank-poster-resized.jpeg": "c1f44c0cbbdbe63eec143873c72f490350b2efbd",
+    "/assets/blank-poster.jpeg": "e59bcf8587e888799c63e38f8667e76547102306",
+    "/assets/blank-profile-resized.webp": "6270511d8125e6d9af8a4dfde48ce333770d4a86",
+    "/assets/blank-profile.webp": "42fe0ea81a42d75d5eb19a278f13ad27c58383de",
+    "/assets/delete-profile.svg": "a586f4217b00946a4f85c542a245dabc2a4f21ff",
+    "/assets/delete.svg": "bc5aa99deb79f8b994bd7d5b1ebe68c7a1cad4a7",
+    "/assets/edit.svg": "5c0cceef33abdc9eeb59739eb7ee5d9c2462da5b",
+    "/assets/grand-budapest-hotel.avif": "25b7938bfc1dffa68854130e16bf1541ccef6249",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/info.svg": "c672c7fbc71edbaa036ce4024dc28ebecc9bc5b8",
+    "/assets/lalaland.jpeg": "98f4cab70144c9a06d06c846d409e40d90b4279b",
+    "/assets/logo.jpeg": "07e8728dbe8d6fca28c338a7bd8a737ce8c08436",
+    "/assets/megaphone.svg": "007e05ce67f6696beabc9ded6634363be0ab3469",
+    "/assets/pencil.svg": "e3ee69146807bbdf43fe12e151fc82da1dea28df",
+    "/assets/plus.svg": "a4098a0b0126c21462b96d82f1362491c152214d",
+    "/assets/reservoir-dogs-1992.webp": "b23995fe777835644123503d36381428b1347831",
+    "/assets/the-fabelmans.jpeg": "1682ea9161908dbea7fb99e0e59f7cb576b4e0ad",
+    "/favicon.ico": "07e8728dbe8d6fca28c338a7bd8a737ce8c08436",
+    "/firebase-messaging-sw.js": "bba1c28b84078ab8fee017b0ed9e811b2ee7bfba",
+    "/index.html": "01fe9bb8fd08fb186204e3fbac2101ef537218e7",
+    "/main.f4608aac1a04ef17.js": "4feb0e430e9dfa1c037fea1a2a2a0bebafc64b9d",
+    "/manifest.webmanifest": "f58ce3f2db750e24c3466c9c2e505de33cd57a06",
+    "/polyfills.48032dd0403ca3fa.js": "deb172f161da0fbe6ac061cee4331b2871a30f78",
+    "/runtime.f63270194df71bb2.js": "c5dd49beaefbdde5dfededb3bbb340d9c192205a",
+    "/scripts.46376658852b4050.js": "bd03f8451f098674464fa7c20db59e6ee66b10eb",
+    "/styles.9b0914432c0323c8.css": "9589a34cd9c082f6e5d64cd2aea81ec47fab16cc"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

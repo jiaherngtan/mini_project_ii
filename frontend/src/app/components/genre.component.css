@@ -1,0 +1,23 @@
+.img-text {
+    text-shadow: black 0px 0px 30px;
+}
+
+.genre {
+    background-color: #f8f9fa;
+    color: black;
+    text-decoration: none;
+    border-color: white;
+    border-radius: 0;
+}
+
+.genre:hover {
+    background-color: rgba(120, 61, 246, 0.1);
+}
+
+.card-bot {
+    box-shadow: rgb(120 61 246) 0px 5px 0px;
+}
+
+.star {
+    color: #f5c518;
+}

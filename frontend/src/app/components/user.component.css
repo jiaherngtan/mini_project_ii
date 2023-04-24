@@ -1,0 +1,17 @@
+.review {
+    background-color: #f8f9fa;
+}
+
+.action {
+    font-size: 0.8rem;
+    color: black;
+    text-decoration: none;
+}
+
+.star {
+    color: #f5c518;
+}
+
+.hint {
+    font-size: 0.8rem;
+}

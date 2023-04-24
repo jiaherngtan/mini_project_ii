@@ -1,0 +1,33 @@
+h1 {
+    font-weight: bold;
+}
+
+.popular,
+.top,
+.now {
+    background-color: #f8f9fa;
+    color: black;
+    text-decoration: none;
+    border-color: white;
+    border-radius: 0;
+}
+
+.popular:hover,
+.top:hover,
+.now:hover {
+    background-color: rgba(120, 61, 246, 0.1);
+}
+
+.main-text {
+    font-size: larger;
+    align-self: center;
+    height: fit-content;
+}
+
+.card-bot {
+    box-shadow: rgb(120 61 246) 0px 5px 0px;
+}
+
+.star {
+    color: #f5c518;
+}

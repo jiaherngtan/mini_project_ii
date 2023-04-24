@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-lg-4 mb-lg-4">
+            <div class="col-lg-6 py-3">
+                <img src="/assets/reservoir-dogs-1992.webp" class="img-fluid text-center">
+            </div>
+            <div class="col-lg-6 px-lg-5 py-3 main-text">
+                <p>Welcome to our movie database application! We are dedicated to creating a comprehensive database of
+                    movies that spans across genres, languages, and countries. Our goal is to provide you with an
+                    extensive collection of movies, as well as a range of information about each movie, to help you make
+                    informed decisions about what to watch.</p>
+                <p>Our application is designed to be easy to use, with features that make it simple to search for
+                    movies, and browse by genre. We also provide detailed information about each movie to help you get a
+                    sense of what the movie is about and whether it's worth watching.</p>
+                <p>We're committed to delivering the best possible experience for our users, and we're constantly
+                    working to improve our application and add new features. We are always happy to help with any
+                    questions or feedback you may have.</p>
+            </div>
+        </div>
+
+        <div class="row mt-lg-5 mb-lg-5">
+            <div class="col-lg-6 pt-lg-0 pt-3">
+                <div *ngIf="apiLoaded | async">
+                    <google-map height="550px" width="100%" [zoom]="zoom" [center]="center" [options]="options">
+                        <map-marker [position]="center"></map-marker>
+                    </google-map>
+                </div>
+            </div>
+            <div class="col-lg-6 px-lg-5 py-3 main-text">
+                <div class="card border-0 rounded-0 h-100 mt-lg-0 mt-4">
+                    <div class="card-body">
+                        <p class="card-text fs-5 fw-bold text-center">Locate Us</p>
+                        <p class="card-text fw-light text-center">
+                            127 Hundred Twenty Seven Terrace,<br>Institute of Movie Science,<br>Singapore 123456
+                        </p>
+                    </div>
+                </div>
+                <div class="card border-0 rounded-0 h-100 mt-lg-0 mt-4">
+                    <div class="card-body">
+                        <p class="card-text fs-5 fw-bold text-center">Contact Us</p>
+                        <p class="card-text fw-light text-center">
+                            (65) 1234 5678<br>Monday - Friday: SGT 09:00 - 17:00<br><br>ask-jhmp@email.com
+                        </p>
+                    </div>
+                </div>
+                <div class="card border-0 rounded-0 h-100 mt-lg-0 mt-4">
+                    <div class="card-body">
+                        <p class="card-text fs-5 fw-bold text-center">Support Us</p>
+                        <p class="card-text fw-light text-center">
+                            If you enjoy using the app and believe in the value it provides,
+                            please consider making a donation.
+                        </p>
+                        <div class="mt-4 text-center">
+                            <google-pay-button environment="TEST" buttonType="donate" buttonColor="white"
+                                buttonSizeMode="fill" [paymentRequest]="{ 
+                                apiVersion: 2,
+                                apiVersionMinor: 0,
+                                allowedPaymentMethods: [{
+                                    type: 'CARD',
+                                    parameters: {
+                                        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                                        allowedCardNetworks:['AMEX', 'VISA', 'MASTERCARD']
+                                    },
+                                    tokenizationSpecification: {
+                                        type: 'PAYMENT_GATEWAY',
+                                        parameters: {
+                                            gateway: 'example',
+                                            gatewayMerchantId: 'exampleGatewayMerchantId'
+                                        }
+                                    }
+                                }],
+                                merchantInfo: {
+                                    merchantId: '12345678901234567890',
+                                    merchantName: 'Demo Merchant'
+                                },
+                                transactionInfo: {
+                                    totalPriceStatus: 'FINAL',
+                                    totalPriceLabel: 'Total',
+                                    totalPrice: '100.00',
+                                    currencyCode: 'USD',
+                                    countryCode: 'US'}
+                                }" (click)="onLoadPaymentData($event)">
+                            </google-pay-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

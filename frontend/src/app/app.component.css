@@ -1,0 +1,31 @@
+a:hover {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    border: none;
+    margin-top: 0;
+    padding: 0;
+}
+
+.navbar-brand {
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar-genres {
+    font-size: small;
+    border-bottom: 1px solid lightgray;
+}
+
+.purple {
+    color: rgb(120, 61, 246);
+    font-weight: bold;
+}
+
+footer,
+.notification {
+    /* border-top: 1px dotted lightgrey; */
+    background-color: rgb(249, 221, 231);
+}

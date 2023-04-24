@@ -1,0 +1,81 @@
+<div *ngIf="messages != null && messages.length > 0">
+  <div *ngFor="let m of messages" class="text-center notification">
+    <p class="fw-light"><img src="/assets/megaphone.svg"> &nbsp;{{ m.title }}. {{ m.body }}</p>
+  </div>
+</div>
+<div class="sticky-top">
+
+  <nav class="navbar navbar-expand-lg bg-body px-lg-5 py-lg-3 py-1">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img class="mx-1 mb-2" src="/assets/logo.jpeg" alt="The Movie Database" width="30" height="30">
+        <span class="text-center fs-6 px-1">The Movie Database</span>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div *ngIf="form" class="collapse navbar-collapse" id="navbarToggler">
+        <form class="d-flex py-2" role="search" [formGroup]="form" (ngSubmit)="search()">
+          <input class="form-control me-2" type="text" placeholder="Search database" aria-label="Search" size="30"
+            formControlName="query" required>
+          <button class="btn btn-outline-secondary" type="submit" data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show">Search</button>
+        </form>
+        <ul class="navbar-nav ms-auto mb-lg-0 mt-lg-2">
+          <li class="nav-item px-1 me-2 mt-lg-1">
+            <a class="nav-link fs-lg-6 purple" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+              [routerLink]="['/about']">About</a>
+          </li>
+          <!-- <li *ngIf="(afAuth.user | async) && this.username"
+                      class="nav-item bg-primary text-dark fw-bold px-1 mt-2 me-4 py-lg-0 py-2">
+                      Welcome, {{ this.username | titlecase }}!
+                  </li> -->
+          <li *ngIf="(afAuth.user | async)" class="nav-item px-1 me-2 mt-lg-1">
+            <a class="nav-link text-dark fs-lg-6 fw-bold" data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show" [routerLink]="['/user']">
+              {{ this.username | titlecase }}</a>
+          </li>
+          <li class="nav-item px-1 me-2 mt-lg-1">
+            <a *ngIf="!(afAuth.user | async)" class="nav-link fs-lg-6 purple" data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show" [routerLink]="['/login']">Watchlist</a>
+            <a *ngIf="(afAuth.user | async)" class="nav-link fs-lg-6 purple" data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show" [routerLink]="['/watchlist']">Watchlist</a>
+          </li>
+          <li class="nav-item px-1 mt-lg-1">
+            <a *ngIf="!(afAuth.user | async)" class="nav-link fs-lg-6 purple" data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show" [routerLink]="['/login']">Login</a>
+            <a *ngIf="(afAuth.user | async)" class="nav-link fs-lg-6 purple" data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg bg-body px-lg-5 px-1 py-0 navbar-genres">
+    <div class="container-fluid">
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarGenresToggler"
+                  aria-controls="navbarGenresToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button> -->
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul *ngFor="let g of genres" class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+              [routerLink]="['/genre', g.id, g.name]">{{ g.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="min-vh-100">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="text-center fs-6 fw-light py-4">
+  This product uses the TMDB API but is not endorsed or
+  certified by TMDB. &copy; 2023 jh-vttp-mini-project. All rights reserved.
+</footer>

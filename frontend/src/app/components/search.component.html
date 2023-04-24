@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+
+<body>
+    <div class="container-fluid d-flex flex-column min-vh-100">
+        <h1 class="px-lg-5 fs-3 fw-bold pt-5">Your search result for "{{ query }}"</h1>
+        <div class="row px-lg-5 px-0 pb-3">
+            <div *ngIf="searchMovies" class="col-lg-6 gy-2">
+                <div class="row" *ngFor="let m of searchMovies">
+                    <div class="col-lg-12 col-sm-6 gy-4">
+                        <div class="card h-100 border-0 rounded-0 text-decoration-none card-bot search">
+                            <a class="row g-0 text-decoration-none text-dark" [routerLink]="['/movie', m.id]">
+                                <div class="col-md-4">
+                                    <img *ngIf="m.posterUrl == ''" src="/assets/blank-profile-resized.webp"
+                                        class="img-fluid">
+                                    <img *ngIf="m.posterUrl != ''"
+                                        src="https://image.tmdb.org/t/p/original/{{m.posterUrl}}" class="img-fluid">
+                                </div>
+                                <div class="col-md-8 card-body d-flex flex-column">
+                                    <h2 class="card-title">{{ m.title }} ({{ m.releaseDate | date: "y" }})</h2>
+                                    <h2 class="card-text"><span class="fa fa-star star"></span> {{
+                                        m.rating | number: '1.1-2' }}</h2>
+                                    <h3 class="card-text mt-auto">View more ></h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="searchMovies.length < 1" class="px-lg-5 py-4">
+                    <p class="fs-5">No movie found</p>
+                </div>
+            </div>
+
+            <div *ngIf="searchPeople" class="col-lg-6 gy-2">
+                <div class="row" *ngFor="let p of searchPeople">
+                    <div class="col-lg-12 col-sm-6 gy-4">
+                        <div class="card h-100 border-0 rounded-0">
+                            <a class="row g-0 text-decoration-none card-bot search" [routerLink]="['/people', p.id]">
+                                <div class="col-md-4">
+                                    <img *ngIf="p.pictureUrl == ''" src="/assets/blank-profile-resized.webp"
+                                        class="img-fluid">
+                                    <img *ngIf="p.pictureUrl != ''"
+                                        src="https://image.tmdb.org/t/p/original/{{p.pictureUrl}}" class="img-fluid">
+                                </div>
+                                <div class="col-md-8 card-body">
+                                    <div class="card-title text-decoration-none text-dark fs-6 fw-bold">
+                                        <h2>{{ p.name }}</h2>
+                                    </div>
+                                    <h2 class="card-text fs-6"> {{ p.role }}</h2>
+                                    <a *ngFor="let m of p.movies"
+                                        class="fst-italic fw-lighter text-decoration-none text-dark"
+                                        [routerLink]="['/movie', m.id]">
+                                        <p class="card-text fs-6">{{ m.title }}</p>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="searchPeople.length < 1" class="px-lg-5 py-4">
+                    <p class="fs-5">No people found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

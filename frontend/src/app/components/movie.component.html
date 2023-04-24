@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+
+<body>
+    <div *ngIf="movie" class="container-fluid d-flex flex-column min-vh-100">
+        <div *ngIf="movie.backdropUrl != ''" class="card text-bg-dark rounded-0 border-0 mt-2">
+            <img src="https://image.tmdb.org/t/p/original/{{movie.backdropUrl}}" class="card-img rounded-0">
+            <div class="card-img-overlay top-50 start-0 img-text">
+                <h1 class="card-title fs-1 fw-bold">{{ movie.title }} ({{ movie.releaseYear }})</h1>
+                <p class="card-text py-3 fs-3 w-75 d-none d-md-block">{{ movie.tagline }}</p>
+            </div>
+        </div>
+        <div class="row px-lg-5 px-0 py-lg-5 py-2">
+            <div class="col-lg-8 card border-0 h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <!-- Modal start -->
+                        <div class="modal fade" id="toWatchedModal" tabindex="-1" aria-labelledby="toWatchedModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <p class="modal-title fs-6 fw-bold" id="toWatchedModalLabel">
+                                            Leave a review for {{ movie.title }}</p>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form [formGroup]="form">
+                                            <div class="mb-3">
+                                                <label for="rating" class="form-label">Rating</label>
+                                                <input type="number" min="1" max="10" class="form-control" id="rating"
+                                                    formControlName="rating">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="review" class="form-label">Review</label>
+                                                <textarea class="form-control" id="review" rows="15"
+                                                    formControlName="review"></textarea>
+                                            </div>
+                                            <button type="button" class="btn btn-secondary me-2"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-dark" data-bs-dismiss="modal"
+                                                (click)="addToWatched()">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal end -->
+                        <img src="https://image.tmdb.org/t/p/original/{{movie.posterUrl}}" class="img-fluid">
+                        <div class="dropdown">
+                            <button
+                                class="btn dropdown-toggle w-100 fw-bold mt-2 mb-lg-0 mb-3 py-2 rounded-1 watchlist-btn"
+                                type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                + Add to Watchlist
+                            </button>
+                            <ul class="dropdown-menu w-100 text-center" aria-labelledby="dropdownMenu">
+                                <li><button class="dropdown-item fw-bold" type="button"
+                                        (click)="addToWantToWatch()">Want to Watch</button></li>
+                                <li>
+                                    <!-- Button trigger modal -->
+                                    <button class="dropdown-item fw-bold" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#toWatchedModal">Watched</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 ps-lg-4 card-body">
+                        <p class="card-text fs-5 fw-bold">{{ movie.countries.join(', ') }} {{ movie.releaseYear }}</p>
+                        <p class="card-text fs-5 py-lg-3">{{ movie.overview }}</p>
+                        <table class="mt-4">
+                            <tr>
+                                <td class="details-left">Running time</td>
+                                <td class="fw-bold details-right">{{ movie.runtime }} minutes</td>
+                            </tr>
+                            <tr>
+                                <td class="details-left">Genre</td>
+                                <td class="fw-bold details-right">{{ movie.genres.join(', ') }}</td>
+                            </tr>
+                            <tr>
+                                <td class="details-left">Language</td>
+                                <td class="fw-bold details-right">{{ movie.languages.join(', ') }}</td>
+                            </tr>
+                            <tr>
+                                <td class="details-left">Rating</td>
+                                <td class="fw-bold details-right"><span class="fa fa-star star"></span> {{
+                                    movie.rating | number: '1.1-2' }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 card border-0 h-100">
+                <div class="card-body">
+                    <h1 class="card-text fs-5 fw-bold">Crews</h1>
+                    <div class="row g-0">
+                        <div class="col-lg-6 col-sm-6 gy-2" *ngFor="let c of crews">
+                            <a class="card h-100 border-0 rounded-0 text-decoration-none crew"
+                                [routerLink]="['/people', c.id]">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img *ngIf="c.pictureUrl == ''" src="/assets/blank-profile-resized.webp"
+                                            class="img-fluid">
+                                        <img *ngIf="c.pictureUrl != ''"
+                                            src="https://image.tmdb.org/t/p/original/{{c.pictureUrl}}"
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="col-md-8 card-body">
+                                        <p class="card-title fw-bold">{{ c.name }}</p>
+                                        <p class="card-text"> {{ c.role }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="similarMovies.length > 0" class="row px-lg-5 px-3 py-3">
+            <h1 class="text-center fs-3 fw-bold">Movies similar to {{ movie.title }}</h1>
+            <div class="col-lg-4 gy-4" *ngFor="let m of similarMovies">
+                <a class="card h-100 similar card-bot" [routerLink]="['/movie', m.id]">
+                    <img *ngIf="m.backdropUrl == ''" src="/assets/blank-poster-resized.jpeg"
+                        class="card-img-top rounded-0">
+                    <img *ngIf="m.backdropUrl != ''" src="https://image.tmdb.org/t/p/original/{{m.backdropUrl}}"
+                        class="card-img-top rounded-0">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ m.title }} ({{ m.releaseDate | date: "y" }})</h2>
+                        <h2 class="card-text"><span class="fa fa-star star"></span> {{
+                            m.rating | number: '1.1-2' }}</h2>
+                        <h3>View more ></h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

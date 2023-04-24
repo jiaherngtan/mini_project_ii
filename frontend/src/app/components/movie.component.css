@@ -1,0 +1,51 @@
+.img-text {
+    text-shadow: black 0px 0px 30px;
+}
+
+.card {
+    background-color: white;
+}
+
+.details-left {
+    font-size: 1.1rem;
+    padding-right: 50px;
+    padding-bottom: 10px;
+}
+
+.details-right {
+    font-size: 1.15rem;
+    padding-bottom: 10px;
+}
+
+.watchlist-btn {
+    background-color: gainsboro;
+}
+
+.crew {
+    font-size: 0.8rem;
+    color: black;
+    align-self: center;
+    height: fit-content;
+}
+
+.similar {
+    background-color: #f8f9fa;
+    color: black;
+    text-decoration: none;
+    border-color: white;
+    border-radius: 0;
+}
+
+.similar:hover,
+.crew:hover,
+.watchlist-btn:hover {
+    background-color: rgba(120, 61, 246, 0.1);
+}
+
+.card-bot {
+    box-shadow: rgb(120 61 246) 0px 5px 0px;
+}
+
+.star {
+    color: #f5c518;
+}

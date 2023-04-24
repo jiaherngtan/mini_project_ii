@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div *ngIf="people" class="container-fluid d-flex flex-column min-vh-100">
+        <div class="card border-0 h-100 px-5 py-lg-4 py-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://image.tmdb.org/t/p/original/{{people.pictureUrl}}" class="img-fluid">
+                </div>
+                <div class="col-md-8 px-lg-5 px-0 card-body">
+                    <p class="card-text fs-4 fw-bold">{{ people.name }}</p>
+                    <p class="card-text fs-5 py-lg-3">{{ people.biography }}</p>
+                    <div class="py-3 py-lg-0">
+                        <table>
+                            <tr>
+                                <td class="details-left">Date of Birth</td>
+                                <td class="fw-bold details-right">{{ people.birthday | date: "d MMM y" }}</td>
+                            </tr>
+                            <tr>
+                                <td class="details-left">Place of Birth</td>
+                                <td class="fw-bold details-right">{{ people.place }}</td>
+                            </tr>
+                            <tr>
+                                <td class="details-left">Department</td>
+                                <td class="fw-bold details-right">{{ people.role }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="popularPeople" class="row card border-0 h-100 px-5">
+            <div class="card-body">
+                <h1 class="text-center fs-4 fw-bold">Popular right now</h1>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 gy-4" *ngFor="let p of popularPeople">
+                        <div class="card h-100 border-0 rounded-0 text-decoration-none card-bot people">
+                            <div class="row g-0">
+                                <a class="col-md-4" [routerLink]="['/people', p.id]">
+                                    <img *ngIf="p.pictureUrl == ''" src="/assets/blank-profile-resized.webp"
+                                        class="img-fluid">
+                                    <img *ngIf="p.pictureUrl != ''"
+                                        src="https://image.tmdb.org/t/p/original/{{p.pictureUrl}}" class="img-fluid">
+                                </a>
+                                <div class="col-md-8 card-body">
+                                    <a class="card-title text-decoration-none text-dark fs-6 fw-bold"
+                                        [routerLink]="['/people', p.id]">{{ p.name }}</a>
+                                    <p class="card-text fs-6"> {{ p.role }}</p>
+                                    <a *ngFor="let m of p.movies"
+                                        class="fst-italic fw-lighter text-decoration-none text-dark"
+                                        [routerLink]="['/movie', m.id]">
+                                        <p class="card-text fs-6">{{ m.title }}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100">
+        <div class="row px-lg-5 px-0 py-lg-5 py-2">
+            <div class="col-lg-6">
+                <div class="card border-0 rounded-0 h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center">
+                            <img *ngIf="imageUrl == null || imageUrl == ''" src="/assets/blank-profile.webp"
+                                class="img-fluid mx-auto align-center d-block">
+                            <img *ngIf="imageUrl != null && imageUrl != ''" src="{{ imageUrl }}"
+                                class="img-fluid mx-auto align-center d-block">
+                        </div>
+                        <div class="col-md-8 ps-lg-4 card-body d-flex flex-column">
+                            <p class="card-text fs-5 fw-bold">{{ username | titlecase }}</p>
+                            <p class="card-text fs-6 fw-light">{{ email }}</p>
+                            <p class="card-text fw-light action">member since {{ created }}</p>
+                            <div class="d-flex mt-auto">
+                                <div>
+                                    <a [routerLink]="[]" class="fw-lighter action" data-bs-toggle="modal"
+                                        data-bs-target="#deleteUserModal">
+                                        <img src="/assets/delete-profile.svg"> &nbsp;Delete profile</a>
+                                    <div class="modal fade" id="deleteUserModal" tabindex="-1"
+                                        aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <p class="modal-title fs-6 fw-bold" id="deleteUserModalLabel">
+                                                        Delete profile</p>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>This will delete all the movies in your watchlist and reviews.
+                                                        Continue?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary me-2"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-dark" data-bs-dismiss="modal"
+                                                        (click)="deleteUser()">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 rounded-0 h-100 mt-lg-0 mt-4">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center">
+                            <img src="/assets/bar-chart.svg" height="50" width="50"
+                                class="img-fluid mx-auto align-center d-block">
+                        </div>
+                        <div class="col-md-8 ps-lg-4 card-body analytics">
+                            <p class="card-text fs-5 fw-bold">Analytics</p>
+                            <p class="card-text fs-6 fw-light">Want to Watch: {{ this.pendMoviesLength }}</p>
+                            <p class="card-text fs-6 fw-light">Watched: {{ this.doneMoviesLength }}</p>
+                            <p *ngIf="(this.pendMoviesLength + this.doneMoviesLength) > 1"
+                                class="card-text fs-6 fw-light">Total movies: {{
+                                (this.pendMoviesLength + this.doneMoviesLength) }}</p>
+                            <p *ngIf="(this.pendMoviesLength + this.doneMoviesLength) < 2"
+                                class="card-text fs-6 fw-light">Total movie: {{
+                                (this.pendMoviesLength + this.doneMoviesLength) }}</p>
+                            <p *ngIf="watchedRequests.length > 1" class="card-text fs-6 fw-light">Total reviews: {{
+                                this.watchedRequests.length }}
+                            </p>
+                            <p *ngIf="watchedRequests.length < 2" class="card-text fs-6 fw-light">Total review: {{
+                                this.watchedRequests.length }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-4">
+                <div class="card border-0 rounded-0 h-100 mt-lg-0 mt-4">
+                    <div class="card-body">
+                        <p class="card-text fs-5 fw-bold text-center">Donation</p>
+                        <p class="card-text fw-light text-center">
+                            If you enjoy using the app and believe in the value it provides,
+                            please consider making a donation.
+                        </p>
+                        <div class="mt-4 text-center">
+                            <google-pay-button environment="TEST" buttonType="donate" buttonColor="white"
+                                buttonSizeMode="fill" [paymentRequest]="{ 
+                                apiVersion: 2,
+                                apiVersionMinor: 0,
+                                allowedPaymentMethods: [{
+                                    type: 'CARD',
+                                    parameters: {
+                                        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                                        allowedCardNetworks:['AMEX', 'VISA', 'MASTERCARD']
+                                    },
+                                    tokenizationSpecification: {
+                                        type: 'PAYMENT_GATEWAY',
+                                        parameters: {
+                                            gateway: 'example',
+                                            gatewayMerchantId: 'exampleGatewayMerchantId'
+                                        }
+                                    }
+                                }],
+                                merchantInfo: {
+                                    merchantId: '12345678901234567890',
+                                    merchantName: 'Demo Merchant'
+                                },
+                                transactionInfo: {
+                                    totalPriceStatus: 'FINAL',
+                                    totalPriceLabel: 'Total',
+                                    totalPrice: '100.00',
+                                    currencyCode: 'USD',
+                                    countryCode: 'US'}
+                                }" (click)="onLoadPaymentData($event)">
+                            </google-pay-button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="px-lg-5">
+            <hr>
+        </div>
+        <div class="px-lg-5 px-3 py-3">
+            <h1 class="fs-4 fw-bold mb-3">Your Reviews</h1>
+            <div *ngIf="watchedRequests.length < 1 || watchedRequests == null">
+                <p class="fw-light">You have not leave any reviews currently</p>
+            </div>
+            <div *ngIf="watchedRequests.length > 0 && watchedRequests != null" class="row">
+                <div class="dropdown mb-3">
+                    <button class="btn btn-light dropdown-toggle mb-lg-0 rounded-1" type="button" id="dropdownMenu"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort by {{ pattern }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <li><button class="dropdown-item fw-light" type="button"
+                                (click)="sort('asc', 'alphabetical a-z')">Alphabetical a-z</button></li>
+                        <li><button class="dropdown-item fw-light" type="button"
+                                (click)="sort('desc', 'alphabetical z-a')">Alphabetical z-a</button></li>
+                        <li><button class="dropdown-item fw-light" type="button"
+                                (click)="sort('highest', 'highest rating')">Highest
+                                rating</button></li>
+                        <li><button class="dropdown-item fw-light" type="button"
+                                (click)="sort('lowest', 'lowest rating')">Lowest
+                                rating</button></li>
+                        <li><button class="dropdown-item fw-light" type="button"
+                                (click)="sort('newest', 'most recent')">Most
+                                recent</button></li>
+                        <li><button class="dropdown-item fw-light" type="button"
+                                (click)="sort('oldest', 'oldest first')">Oldest
+                                first</button></li>
+                    </ul>
+                </div>
+                <p class="fw-light fst-italic hint">Notes: From left - right, up - down</p>
+                <div class="col-lg-6" *ngFor="let wr of watchedRequests">
+                    <div class="card border-0 rounded-0 h-100 mt-lg-0 mt-3 mb-3">
+                        <div class="row g-0">
+                            <a class="col-md-4 mt-lg-2" [routerLink]="['/movie', wr.movie.id]">
+                                <img src="https://image.tmdb.org/t/p/original/{{wr.movie.posterUrl}}" class="img-fluid">
+                            </a>
+                            <div class="col-md-8 ps-lg-4 card-body review">
+                                <p class="card-text fs-6">{{ wr.movie.title }} ({{ wr.movie.releaseYear }})</p>
+                                <p class="card-text fw-light"><span class="fa fa-star star"></span>
+                                    {{ wr.reviewRating }}</p>
+                                <p class="card-text fs-6 fw-light">{{ wr.text }}</p>
+                                <p class="card-text fs-6 fw-light fst-italic">- reviewed on {{ wr.movie.reviewed }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

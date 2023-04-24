@@ -1,0 +1,25 @@
+.card {
+    background-color: #f8f9fa;
+}
+
+.top {
+    background-color: #f8f9fa;
+    color: black;
+    text-decoration: none;
+    border-color: white;
+    border-radius: 0;
+}
+
+.card-bot {
+    box-shadow: rgb(120 61 246) 0px 5px 0px;
+}
+
+.star {
+    color: #f5c518;
+}
+
+.action {
+    font-size: 0.8rem;
+    color: black;
+    text-decoration: none;
+}

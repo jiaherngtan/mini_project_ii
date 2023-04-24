@@ -1,0 +1,25 @@
+.details-left {
+    font-size: 1.1rem;
+    padding-right: 50px;
+    padding-bottom: 10px;
+}
+
+.details-right {
+    font-size: 1.15rem;
+    padding-bottom: 10px;
+}
+
+.people {
+    font-size: 0.8rem;
+    color: black;
+    align-self: center;
+    height: fit-content;
+}
+
+.people:hover {
+    background-color: rgba(120, 61, 246, 0.1);
+}
+
+.card-bot {
+    box-shadow: rgb(120 61 246) 0px 5px 0px;
+}

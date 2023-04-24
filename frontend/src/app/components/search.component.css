@@ -1,0 +1,19 @@
+.search {
+    background-color: #f8f9fa;
+    font-size: 0.8rem;
+    color: black;
+    align-self: center;
+    height: fit-content;
+}
+
+.search:hover {
+    background-color: rgba(120, 61, 246, 0.1);
+}
+
+.card-bot {
+    box-shadow: rgb(120 61 246) 0px 5px 0px;
+}
+
+.star {
+    color: #f5c518;
+}

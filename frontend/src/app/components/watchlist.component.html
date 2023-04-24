@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+
+<body>
+    <div *ngIf="pendMovies && doneMovies && (pendMovies.length > 0 || doneMovies.length > 0)"
+        class="container-fluid d-flex flex-column min-vh-100">
+        <h1 class="px-lg-5 fs-3 fw-bold mt-5">Your Watchlist</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="px-lg-5 px-0 py-3">
+                    <p *ngIf="pendMovies.length == 0" class="fw-lighter fs-6 py-2 mb-4">No title in Want to Watch at
+                        the moment</p>
+                    <p *ngIf="pendMovies.length == 1" class="fw-lighter fs-6 py-2 mb-4">Showing 1 title in
+                        Want to Watch</p>
+                    <p *ngIf="pendMovies.length > 1" class="fw-lighter fs-6 py-2 mb-4">Showing {{
+                        pendMovies.length }} titles in Want to Watch</p>
+                    <div *ngFor="let m of pendMovies; let i = index">
+                        <p><a class="btn btn-light text-start w-100 d-flex" data-bs-toggle="collapse"
+                                [href]="'#m' + m.id" role="button" aria-expanded="false" aria-controls="collapse">
+                                <span class="fw-bold p-2 flex-grow-1">{{ m.title }} ({{ m.releaseYear }})</span>
+                                <span class="fw-lighter fst-italic p-2">Added {{ m.added }}</span></a></p>
+                        <div class="collapse mb-3" [id]="'m' + m.id">
+                            <div class="card h-100 border-0 rounded-0 text-decoration-none card-bot">
+                                <div class="row g-0 text-decoration-none text-dark">
+                                    <div class="col-md-4">
+                                        <a [routerLink]="['/movie', m.id]">
+                                            <img *ngIf="m.posterUrl == ''" src="/assets/blank-profile-resized.webp"
+                                                class="img-fluid">
+                                            <img *ngIf="m.posterUrl != ''"
+                                                src="https://image.tmdb.org/t/p/original/{{m.posterUrl}}"
+                                                class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8 ps-lg-4 card-body d-flex flex-column">
+                                        <p class="card-text fs-6">{{ m.countries.join(', ') }}</p>
+                                        <p class=" card-text fs-6 fw-lighter">{{ m.overview }}</p>
+                                        <p class="card-text fw-lighter"><span class="fa fa-star star"></span>
+                                            {{m.rating | number: '1.1-2' }}</p>
+                                        <div class="mt-auto d-flex">
+                                            <!-- Modal start -->
+                                            <a [routerLink]="[]" class="fw-lighter flex-grow-1 action"
+                                                data-bs-toggle="modal" [attr.data-bs-target]="'#toWatchedModal' + i">
+                                                <img src="/assets/plus.svg"> &nbsp;Add to Watched</a>
+                                            <!-- Modal end -->
+                                            <!-- Modal start -->
+                                            <div class="modal fade" [id]="'toWatchedModal' + i" tabindex="-1"
+                                                aria-labelledby="toWatchedModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <p class="modal-title fs-6 fw-bold"
+                                                                id="toWatchedModalLabel">
+                                                                Leave a review for {{ m.title }}</p>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form [formGroup]="form">
+                                                                <div class="mb-3">
+                                                                    <label for="rating"
+                                                                        class="form-label">Rating</label>
+                                                                    <input type="number" min="1" max="10"
+                                                                        class="form-control" id="rating"
+                                                                        formControlName="rating">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="review"
+                                                                        class="form-label">Review</label>
+                                                                    <textarea class="form-control" id="review" rows="15"
+                                                                        formControlName="review"></textarea>
+                                                                </div>
+                                                                <button type="button" class="btn btn-secondary me-2"
+                                                                    data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-dark"
+                                                                    data-bs-dismiss="modal"
+                                                                    (click)="updateToWatched(i)">Submit</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal end -->
+                                            <a [routerLink]="[]" class="fw-lighter action"
+                                                (click)="removeFromList(m.id)"><img src="/assets/delete.svg"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="px-lg-5 px-0 py-3">
+                    <p *ngIf="doneMovies.length == 0" class="fw-lighter fs-6 py-2 mb-4">No title in Watched at
+                        the moment</p>
+                    <p *ngIf="doneMovies.length == 1" class="fw-lighter fs-6 py-2 mb-4">Showing 1 title in
+                        Watched</p>
+                    <p *ngIf="doneMovies.length > 1" class="fw-lighter fs-6 py-2 mb-4">Showing {{
+                        doneMovies.length }} titles in Watched</p>
+                    <div *ngFor="let m of doneMovies; let i = index">
+                        <p><a class="btn btn-light text-start w-100 d-flex" data-bs-toggle="collapse"
+                                [href]="'#m' + m.id" role="button" aria-expanded="false" aria-controls="collapse">
+                                <span class="fw-bold p-2 flex-grow-1">{{ m.title }} ({{ m.releaseYear }})</span>
+                                <span class="fw-lighter fst-italic p-2">Added {{ m.added }}</span></a></p>
+                        <div class="collapse mb-3" [id]="'m' + m.id">
+                            <div class="card h-100 border-0 rounded-0 text-decoration-none card-bot">
+                                <div class="row g-0 text-decoration-none text-dark">
+                                    <div class="col-md-4">
+                                        <a [routerLink]="['/movie', m.id]">
+                                            <img *ngIf="m.posterUrl == ''" src="/assets/blank-profile-resized.webp"
+                                                class="img-fluid">
+                                            <img *ngIf="m.posterUrl != ''"
+                                                src="https://image.tmdb.org/t/p/original/{{m.posterUrl}}"
+                                                class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <div *ngIf="m.reviewRating != -1 && m.text != ''"
+                                        class="col-md-8 ps-lg-4 card-body d-flex flex-column">
+                                        <p class="card-text">Your rating and review:</p>
+                                        <p class="card-text fw-lighter"><span class="fa fa-star star"></span> {{
+                                            m.reviewRating }}</p>
+                                        <p class="card-text fw-lighter">{{ m.text }}</p>
+                                        <p class="card-text fw-lighter fst-italic">- reviewed on {{ m.reviewed
+                                            }}</p>
+                                        <div class="mt-auto d-flex">
+                                            <!-- Modal start -->
+                                            <a [routerLink]="[]" class="fw-lighter flex-grow-1 action"
+                                                data-bs-toggle="modal" [attr.data-bs-target]="'#editReviewModal' + i">
+                                                <img src="/assets/edit.svg"> &nbsp;Edit Review</a>
+                                            <!-- Modal end -->
+                                            <!-- Modal start -->
+                                            <div class="modal fade" [id]="'editReviewModal' + i" tabindex="-1"
+                                                aria-labelledby="editReviewModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <p class="modal-title fs-6 fw-bold"
+                                                                id="editReviewModalLabel">
+                                                                Edit your review for {{ m.title }}</p>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form [formGroup]="editReviewForm">
+                                                                <div class="mb-3">
+                                                                    <label for="rating"
+                                                                        class="form-label">Rating</label>
+                                                                    <input type="number" min="1" max="10"
+                                                                        class="form-control" id="rating"
+                                                                        formControlName="rating">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="review"
+                                                                        class="form-label">Review</label>
+                                                                    <textarea class="form-control" id="review" rows="15"
+                                                                        formControlName="review"></textarea>
+                                                                </div>
+                                                                <button type="button" class="btn btn-secondary me-2"
+                                                                    data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-dark"
+                                                                    data-bs-dismiss="modal"
+                                                                    (click)="editReview(i)">Submit</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal end -->
+                                            <a [routerLink]="[]" class="fw-lighter action"
+                                                (click)="removeFromList(m.id)"><img src="/assets/delete.svg"></a>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="m.reviewRating == -1 && m.text == ''"
+                                        class="col-md-8 ps-lg-4 card-body d-flex flex-column">
+                                        <p class="card-text fs-6">{{ m.countries.join(', ') }}
+                                        </p>
+                                        <p class=" card-text fs-6 fw-lighter">{{ m.overview }}</p>
+                                        <p class="card-text fw-lighter"><span class="fa fa-star star"></span>
+                                            {{m.rating | number: '1.1-2' }}</p>
+                                        <!-- Modal -->
+                                        <div class="mt-auto">
+                                            <div>
+                                                <a [routerLink]="[]" class="fw-lighter action" data-bs-toggle="modal"
+                                                    [attr.data-bs-target]="'#addReviewModal' + i">
+                                                    <img src="/assets/pencil.svg"> &nbsp;Add a Review</a>
+                                                <div class="modal fade" [id]="'addReviewModal' + i" tabindex="-1"
+                                                    aria-labelledby="addReviewModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <p class="modal-title fs-6 fw-bold"
+                                                                    id="addReviewModalLabel">
+                                                                    Leave a review for {{ m.title }}</p>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form [formGroup]="addReviewForm">
+                                                                    <div class="mb-3">
+                                                                        <label for="rating"
+                                                                            class="form-label">Rating</label>
+                                                                        <input type="number" min="1" max="10"
+                                                                            class="form-control" id="rating"
+                                                                            formControlName="rating">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="review"
+                                                                            class="form-label">Review</label>
+                                                                        <textarea class="form-control" id="review"
+                                                                            rows="15"
+                                                                            formControlName="review"></textarea>
+                                                                    </div>
+                                                                    <button type="button" class="btn btn-secondary me-2"
+                                                                        data-bs-dismiss="modal">Cancel</button>
+                                                                    <button type="submit" class="btn btn-dark"
+                                                                        data-bs-dismiss="modal"
+                                                                        (click)="addReview(i)">Submit</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="pendMovies.length == 0 && doneMovies.length == 0" class="row px-lg-5 px-3 py-3">
+        <h1 class="text-center fs-3 fw-bold mt-4">You have no movie in your Watchlist</h1>
+        <p class="text-center fw-lighter fs-6 mb-3">Here are some recommendations to help you get started</p>
+        <div class="col-lg-4 gy-4" *ngFor="let m of topRatedMovies">
+            <a class="card h-100 top card-bot" [routerLink]="['/movie', m.id]">
+                <img *ngIf="m.backdropUrl == ''" src="/assets/blank-poster-resized.jpeg" class="card-img-top rounded-0">
+                <img *ngIf="m.backdropUrl != ''" src="https://image.tmdb.org/t/p/original/{{m.backdropUrl}}"
+                    class="card-img-top rounded-0">
+                <div class="card-body">
+                    <h2 class="card-title">{{ m.title }} ({{ m.releaseDate | date: "y" }})</h2>
+                    <h2 class="card-text"><span class="fa fa-star star"></span> {{
+                        m.rating | number: '1.1-2' }}</h2>
+                    <h3>View more ></h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

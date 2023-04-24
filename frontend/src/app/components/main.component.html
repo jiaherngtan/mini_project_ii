@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+
+<body>
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-6 py-3">
+                <img src="/assets/the-fabelmans.jpeg" class="img-fluid"
+                    alt="https://www.criterion.com/current/posts/7925-steven-spielbergs-the-fabelmans">
+            </div>
+            <div class="col-lg-6 px-lg-5 py-3 main-text">
+                <h1>The Movie Database</h1>
+                <p>Introducing the movie app for cinephiles everywhere! Browse the large collection of films and create
+                    your own watchlist. Finding your next favorite flick has never been easier. This product is powered
+                    by the TMDB API.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>List of Popular Movies</h1>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-1 gy-4" *ngFor="let m of popularMovies">
+                        <a class="card h-100 popular card-bot" [routerLink]="['/movie', m.id]">
+                            <img src="https://image.tmdb.org/t/p/original/{{m.backdropUrl}}"
+                                class="card-img-top rounded-0">
+                            <div class="card-body">
+                                <h2 class="card-title">{{ m.title }}</h2>
+                                <p class="card-text">In cinemas from {{ m.releaseDate | date: "d MMM y" }}.</p>
+                                <h3>View more ></h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 px-lg-5 py-lg-4 py-sm-5">
+                <h2>Top Rated Movies</h2>
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6 gy-2" *ngFor="let m of topRatedMovies | slice:0:18">
+                        <a class="card top" [routerLink]="['/movie', m.id]">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://image.tmdb.org/t/p/original/{{m.posterUrl}}" class="img-fluid">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title fw-bold">{{ m.title }}</h3>
+                                        <p class="card-text"> {{ m.releaseDate | date: "y" }}</p>
+                                        <p class="card-text"><span class="fa fa-star star"></span> {{ m.rating | number:
+                                            '1.1-2' }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <br><br>
+                <h2>Now Playing</h2>
+                <div class="card border-0 rounded-0 card-bot">
+                    <ul class="list-group list-group-flush" *ngFor="let m of nowPlayingMovies, let i = index">
+                        <a class="text-decoration-none" [routerLink]="['/movie', m.id]">
+                            <li class="list-group-item now">{{ i+1 }}. {{ m.title }}</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+
+<body>
+    <div *ngIf="genreMovies" class="container-fluid d-flex flex-column min-vh-100">
+        <div class="card text-bg-dark rounded-0 border-0">
+            <img *ngIf="this.bannerUrl" src="https://image.tmdb.org/t/p/original/{{this.bannerUrl}}"
+                class="card-img rounded-0">
+            <div class="card-img-overlay top-50 start-0 img-text">
+                <h1 *ngIf="id == 10770" class="card-title fs-1 fw-bold img-text">TV Show</h1>
+                <h1 *ngIf="id != 10770" class="card-title fs-1 fw-bold img-text">{{ genre | titlecase }}</h1>
+            </div>
+        </div>
+        <div class="row px-lg-5 px-0 py-3">
+            <div class="col-lg-4 gy-4" *ngFor="let m of genreMovies">
+                <a class="card h-100 genre card-bot" [routerLink]="['/movie', m.id]">
+                    <img *ngIf="m.backdropUrl == ''" src="/assets/blank-poster-resized.jpeg"
+                        class="card-img-top rounded-0">
+                    <img *ngIf="m.backdropUrl != ''" src="https://image.tmdb.org/t/p/original/{{m.backdropUrl}}"
+                        class="card-img-top rounded-0">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ m.title }} ({{ m.releaseDate | date: "y" }})</h2>
+                        <h2 class="card-text"><span class="fa fa-star star"></span> {{
+                            m.rating | number: '1.1-2' }}</h2>
+                        <h3>View more ></h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
