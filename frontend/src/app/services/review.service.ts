@@ -50,6 +50,8 @@ export class ReviewService {
   }
 
   getSortedReviews(id: string, pattern: string): Promise<WatchedRequest[]> {
+    console.info(id)
+    console.info(pattern)
     return firstValueFrom(
       this.httpClient.get<WatchedRequest[]>(this.getSortedReviewsArg(id, pattern))
     )
