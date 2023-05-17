@@ -76,7 +76,7 @@ The project is organized into two main directories: frontend and backend. The fr
 <img width="1428" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/b8598936-187b-4643-b1e1-ae5d490698d5">
 
 * User can view the list of movies in ther "Watched" section, and can sort them by alphabetically, time added, and rating.
-<img width="1426" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/5e07fee4-7867-46d2-bce7-689b368fd0a2">
+<img width="1423" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/73da5901-0e6a-46a5-9439-352c77fd5109">
 
 ## Setup and Installation
 ...
