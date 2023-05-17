@@ -64,7 +64,9 @@ User details page:
 * User can view their basic information about themselve (username, email, date joined).
 * User can view the number of movies they have in their watchlist at a glance via analytics.
 * User can delete their profile.
+
 <img width="1428" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/b8598936-187b-4643-b1e1-ae5d490698d5">
+
 * User can view the list of movies in ther "Watched" section, and can sort them by alphabetically, time added, and rating.
 <img width="1426" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/5e07fee4-7867-46d2-bce7-689b368fd0a2">
 
