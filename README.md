@@ -45,4 +45,4 @@ The project is organized into two main directories: frontend and backend. The fr
 ## Contributing
 ...
 
-image.png
+<img width="1432" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/1b20a3eb-9241-46b6-95c0-fcf939ef8292">
