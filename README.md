@@ -38,10 +38,11 @@ The project is organized into two main directories: frontend and backend. The fr
 #### Deployment
 * Github actions deploy to Railway
 * Docker
-* VM ([Link to VM](http://linux-vm-jh.brazilsouth.cloudapp.azure.com:8080/backend/))
 
 ## Setup and Installation
 ...
 
 ## Contributing
 ...
+
+image.png

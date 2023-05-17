@@ -1,7 +1,7 @@
 const proxy_config = [
     {
         context: ['/**'],
-        target: 'http://localhost:8080',
+        target: 'https://tmdb.up.railway.app',
         secure: false
     }
 ]
