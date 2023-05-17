@@ -1,7 +1,5 @@
 # Mini Project - The Movie Database
 
-[Sample profile picture](https://jhtan.sgp1.digitaloceanspaces.com/myobjects/ecce1557)
-
 ## Disclaimer
 This product uses the TMDB API but is not endorsed or certified by TMDB.<br>
 [Link to TMDB API](https://developers.themoviedb.org/3)
@@ -39,10 +37,36 @@ The project is organized into two main directories: frontend and backend. The fr
 * Github actions deploy to Railway
 * Docker
 
+#### Screenshots
+Landing page:
+* User can view movies by genre, and search for movies and casts through the top navigation bar.
+* User can view latest movies, popular movies, and top rated movies at one glance.
+<img width="1426" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/108dd70a-d4bc-4e64-b0ac-a7576ecd1206">
+
+Sign-up / Login page:
+* User can sign up a new account or login to their account.
+* User account is needed to access to some of the features of the application such as Watchlist creation, modification, and deletion; Review creation, modification, and deletion; Watchlist display, and sorting.
+<img width="1425" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/48d10f93-d709-4528-8269-4bf8fbe22977">
+
+Movie details page:
+* User can view movie details such as production countries, production year, overview, running time, genres, language, rating, casts, and similar movies.
+<img width="1430" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/ce645216-4001-44f9-bbe0-db1aea61047a">
+* User can add the movie to "Want to Watch" or "Watched" via the Add to Watchlist button. Review (rating and comment) can be given if the movie is added to "Watched".
+<img width="1428" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/f7395892-8210-448f-bb3e-9d771f9082e7">
+
+Watchlist page:
+* User can view the list of movies in their watchlist at a glance with date added being displayed. When movie in "Want to Watch" is expanded, user can view some of the basic information about the movie, and they are able to add the movie to "Watched", or delete it from the list.
+<img width="1427" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/bbc3760a-c30f-4001-a634-f19af282751d">
+* When movie in "Watched" is expanded, user can view their rating and comment on the movie, and they are able to delete the movie from the list as well.
+<img width="1425" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/de14eff6-be4d-45fe-ac39-2267f4b51fb1">
+
+User details page:
+* User can view their basic information about themselve (username, email, date joined).
+* User can view the number of movies they have in their watchlist at a glance via analytics.
+* User can view the list of movies in ther "Watched" section, and can sort them by alphabetically, time added, and rating.
+* User can delete their profile.
+<img width="1428" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/b8598936-187b-4643-b1e1-ae5d490698d5">
+<img width="1426" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/5e07fee4-7867-46d2-bce7-689b368fd0a2">
+
 ## Setup and Installation
 ...
-
-## Contributing
-...
-
-<img width="1432" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/1b20a3eb-9241-46b6-95c0-fcf939ef8292">
