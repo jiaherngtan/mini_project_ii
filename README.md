@@ -5,7 +5,13 @@ This product uses the TMDB API but is not endorsed or certified by TMDB.<br>
 [Link to TMDB API](https://developers.themoviedb.org/3)
 
 ## Project Description
-This is a full-stack web application that allows users to look for movies information, save movies and reviews into their personal watchlist. It is built using Angular for the front-end and Spring Boot for the back-end.<br>
+This is a full-stack web application that allows users to:
+* Look for movies by popularity, ratung, genre, and search
+* Look for movie information and similar movies
+* Add, update, and delete movies to/from their personal watchlist
+* Add, update, and delete movie reviews
+
+It is built using Angular for the front-end and Spring Boot for the back-end.<br>
 The authentication, authorization, and validation features are done by Firebase Authentication.
 
 ## Project Structure
@@ -20,7 +26,6 @@ The project is organized into two main directories: frontend and backend. The fr
 
 ## Technologies Used
 #### Client side
-* Angular
 * Angular 15.2.6
 * Angular Fire 7.5.0
 * Angular Google Map 15.2.8
@@ -32,6 +37,7 @@ The project is organized into two main directories: frontend and backend. The fr
 #### Persistence
 * Redis
 * MySQL
+* DigitalOcean
 
 #### Deployment
 * Github actions deploy to Railway
