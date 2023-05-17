@@ -51,12 +51,14 @@ The project is organized into two main directories: frontend and backend. The fr
 #### Movie details page:
 * User can view movie details such as production countries, production year, overview, running time, genres, language, rating, casts, and similar movies.
 <img width="1430" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/ce645216-4001-44f9-bbe0-db1aea61047a">
+
 * User can add the movie to "Want to Watch" or "Watched" via the Add to Watchlist button. Review (rating and comment) can be given if the movie is added to "Watched".
 <img width="1428" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/f7395892-8210-448f-bb3e-9d771f9082e7">
 
 #### Watchlist page:
 * User can view the list of movies in their watchlist at a glance with date added being displayed. When movie in "Want to Watch" is expanded, user can view some of the basic information about the movie, and they are able to add the movie to "Watched", or delete it from the list.
 <img width="1427" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/bbc3760a-c30f-4001-a634-f19af282751d">
+
 * When movie in "Watched" is expanded, user can view their rating and comment on the movie, and they are able to delete the movie from the list as well.
 <img width="1425" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/de14eff6-be4d-45fe-ac39-2267f4b51fb1">
 
