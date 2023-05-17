@@ -68,7 +68,7 @@ The project is organized into two main directories: frontend and backend. The fr
 * When movie in "Watched" is expanded, user can view their rating and comment on the movie, and they are able to delete the movie from the list as well.
 <img width="1425" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/de14eff6-be4d-45fe-ac39-2267f4b51fb1">
 
-User details page:
+#### User details page:
 * User can view their basic information about themselve (username, email, date joined).
 * User can view the number of movies they have in their watchlist at a glance via analytics.
 * User can delete their profile.
