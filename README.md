@@ -18,10 +18,10 @@ The authentication, authorization, and validation features are done by Firebase 
 The project is organized into two main directories: frontend and backend. The frontend directory contains the Angular front-end code, while the backend directory contains the Spring Boot back-end code.
 
 ## Features
-* User registration, login and deletion with Firebase Authentication
+* User registration, login, and deletion with Firebase Authentication
 * Notifications with Firebase Cloud Messaging
-* Watchlist creation, modification and deletion
-* Review creation, modification and deletion
+* Watchlist creation, modification, and deletion
+* Review creation, modification, and deletion
 * Watchlist display and sorting
 
 ## Technologies Used
@@ -45,13 +45,13 @@ The project is organized into two main directories: frontend and backend. The fr
 
 ## Screenshots
 #### Landing page:
-* User can view movies by genre, and search for movies and casts through the top navigation bar.
-* User can view latest movies, popular movies, and top rated movies at one glance.
+* Users can view movies by genre, and search for movies and casts through the top navigation bar.
+* Users can view the latest movies, popular movies, and top-rated movies at one glance.
 <img width="1426" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/108dd70a-d4bc-4e64-b0ac-a7576ecd1206">
 
 #### Sign-up / Login page:
-* User can sign up a new account or login to their account.
-* User account is needed to access to some of the features of the application such as Watchlist creation, modification, and deletion; Review creation, modification, and deletion; Watchlist display, and sorting.
+* Users can sign up for a new account or log in to their account.
+* User account is needed to access some of the application's features such as Watchlist creation, modification, and deletion; Review creation, modification, and deletion; Watchlist display, and sorting.
 <img width="1425" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/48d10f93-d709-4528-8269-4bf8fbe22977">
 
 #### Movie details page:
@@ -62,20 +62,20 @@ The project is organized into two main directories: frontend and backend. The fr
 <img width="1428" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/f7395892-8210-448f-bb3e-9d771f9082e7">
 
 #### Watchlist page:
-* User can view the list of movies in their watchlist at a glance with date added being displayed. When movie in "Want to Watch" is expanded, user can view some of the basic information about the movie, and they are able to add the movie to "Watched", or delete it from the list.
+* Users can view the list of movies in their watchlist at a glance with the date added displayed. When the movie in "Want to Watch" is expanded, users can view some of the basic information about the movie, and they are able to add the movie to "Watched", or delete it from the list.
 <img width="1427" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/bbc3760a-c30f-4001-a634-f19af282751d">
 
-* When movie in "Watched" is expanded, user can view their rating and comment on the movie, and they are able to delete the movie from the list as well.
+* When the movie in "Watched" is expanded, user can view their rating and comment on the movie, and they are able to delete the movie from the list as well.
 <img width="1425" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/de14eff6-be4d-45fe-ac39-2267f4b51fb1">
 
 #### User details page:
-* User can view their basic information about themselve (username, email, date joined).
-* User can view the number of movies they have in their watchlist at a glance via analytics.
+* User can view their basic information about themselves (username, email, date joined).
+* Users can view the number of movies they have in their watchlist at a glance via analytics.
 * User can delete their profile.
 
 <img width="1428" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/b8598936-187b-4643-b1e1-ae5d490698d5">
 
-* User can view the list of movies in ther "Watched" section, and can sort them by alphabetically, time added, and rating.
+* User can view the list of movies in the "Watched" section and can sort them alphabetically, time added, and rating.
 <img width="1423" alt="image" src="https://github.com/jiaherngtan/mini_project_ii/assets/87298876/73da5901-0e6a-46a5-9439-352c77fd5109">
 
 ## Setup and Installation
