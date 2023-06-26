@@ -6,7 +6,7 @@ This product uses the TMDB API but is not endorsed or certified by TMDB.<br>
 
 ## Project Description
 This is a full-stack web application that allows users to:
-* Look for movies by popularity, ratung, genre, and search
+* Look for movies by popularity, rating, genre, and search
 * Look for movie information and similar movies
 * Add, update, and delete movies to/from their personal watchlist
 * Add, update, and delete movie reviews
